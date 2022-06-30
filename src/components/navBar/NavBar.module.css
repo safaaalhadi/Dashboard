@@ -1,0 +1,109 @@
+/* .nav {
+  
+    padding:0 20px 0px;
+    position: fixed;
+    width: 100%;
+    margin-top: -2px;
+    background-color: white;
+}
+.navImg{
+    display:inline-block;
+    height: 15px;
+    width: 225px;
+    left: 33px;
+    top: 583px;
+
+}
+.link {
+    display: inline-block;
+    height: 15px;
+    width: 84px;
+    left: 138px;
+    padding: 20px 0 0 15px;
+
+
+}
+.navlink {
+    font-size: 57px;
+    margin-top : -36px;
+    float: right;
+   color: #f2a054 !important;
+   display: block;
+   padding: 0.5rem 1rem;
+   text-decoration: none;
+   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+.navedit {
+    float: right;
+   color: #f2a054 !important;
+   display: block;
+   padding: 0.5rem 1rem;
+   text-decoration: none;
+   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+@media (max-width:540px) {
+    .navlink {
+        margin-top: -90px;
+        margin-right: -50px;
+    }
+    .navedit{
+        margin-top: -52px;
+    }
+}
+@media (max-width:280px) {
+    .navlink {
+        margin: -68px -52px 0 0;
+    }
+    .navedit{
+        margin: -66px -65px 0 0;
+    }
+} */
+.contenar {
+    position: relative;
+    padding: 22px 66px 0 33px;
+  }
+  .contenar nav.nav {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .contenar nav.nav .logo {
+    display: flex;
+  }
+  
+  .contenar nav.nav .logo img {
+    width: 75px;
+    margin-top: -22px;
+  }
+  .contenar nav.nav .logo p {
+    font-size: 18px;
+    margin-left: 30px;
+    padding-top: 7px;
+    margin-bottom: 0;
+  }
+  .contenar nav.nav .logo span .linkAdd {
+    font-size: 57px;
+    margin-top : -34px;
+    float: right;
+   color: #f2a054 !important;
+   display: block;
+   padding: 0.5rem 1rem;
+   text-decoration: none;
+   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  }
+  .contenar nav.nav .logo span .linkEdit {
+    float: right;
+    color: #f2a054 !important;
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  }
+  .contenar nav.nav .contact p {
+    font-size: 18px;
+    padding-top: 9px;
+  }
+  .contenar nav.nav .contact p span{
+      padding-right: 9px;
+      padding-left: 9px;
+  }
