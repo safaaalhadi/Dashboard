@@ -20,9 +20,19 @@
     justify-content: center;
 }
 .form .select {
-    width: 30%;
-    margin: 10% 0;
+    width: 25%;
+    margin: 4% 0 2%;
     text-align: center;
     border-radius: 10px;
     padding: 5px;
+}
+.CircularProgress{
+    margin-top: 16%;
+    position: relative;
+    left: 50%;
+}
+.content .card {
+    border: 1px solid #282828;
+    border-radius: 41px 0;
+    padding: 1rem 2rem 0;
 }

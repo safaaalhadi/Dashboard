@@ -30,15 +30,13 @@ const Users = () => {
   const render = member.map((user) => {
     return (
       <>
-        <div className="col-sm-4 mb-1 mt-40" key={user.memberId}>
+        <div className="col-md-4 mt-40" key={user.memberId}>
           <div className={style.card}>
             <p>
               <b style={{ color: "#eb8324" }}>Name : </b>
               {user.firstName} {user.lastName}
             </p>
-            {/* <p> <b style={{color:'#eb8324'}}>MemberId</b> : {user.memberId}</p> */}
             <p>
-              {" "}
               <b style={{ color: "#eb8324" }}>Specification : </b>
               {user.specification}
             </p>
@@ -56,16 +54,17 @@ const Users = () => {
 
   return (
     <>
-      <div className="content" style={{ paddingLeft: "30px" }}>
-        <Row className="m-0">{render}</Row>
-      </div>
-      <form className={style.form}>
+    <form className={style.form}>
         <select onClick={(e) => Handlerender(e)} className={style.select}>
           <option value="all">all Members</option>
           <option value="Employee">Employee</option>
           <option value="Intern">Intern</option>
         </select>
       </form>
+      <div className="content" style={{ paddingLeft: "30px" }}>
+        <Row className="m-0">{render}</Row>
+      </div>
+      
     </>
   );
 };
