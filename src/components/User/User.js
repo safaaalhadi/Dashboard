@@ -7,9 +7,11 @@ import style from "./User.module.css";
 const Users = () => {
   const [member, setMember] = useState([]);
   const state = useSelector((state) => state.allMembers);
+
   useEffect(() => {
     setMember(state);
   }, [state]);
+
   const Handlerender = (e) => {
     const { value } = e.target;
     if (value === "Intern") {
