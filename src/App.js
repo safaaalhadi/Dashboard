@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setEmployees } from "../src/redux/action/employeesAction";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp"
+import ViewUser from "./components/User/ViewUser";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="/add" element={<Add />}/>
           <Route path="/user" element={<User />}/>
           <Route path="/edit/:id" element={<Edit />}/>
+          <Route path="/viewMember/:id" element={<ViewUser />}/>
         </Routes>
         
       </BrowserRouter>

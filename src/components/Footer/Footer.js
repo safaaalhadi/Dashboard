@@ -35,12 +35,12 @@ const Footer = () => {
            <footer className={style.footer}>
            <div className={style.contact}>
            <p>
-            <span><b>Join US : </b>hr@focal-x.com</span>
+            <span><b>Join US : hr@focal-x.com</b></span>
           </p>
           </div>
           <div className={style.contents}>
             <p>
-              <span><b>Customer Care :</b> info@focal-x.com  </span> | <span> +963 951 897 739</span>
+              <span><b>Customer Care :</b> info@focal-x.com  </span> | <span className={style.spans}> +963 951 897 739</span>
             </p>
           </div>
            </footer>

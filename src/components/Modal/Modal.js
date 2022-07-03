@@ -9,7 +9,7 @@ import { MDBBtn,
     MDBModalFooter,
   } from 'mdb-react-ui-kit';
 
-export default function Resuble ({close,content}) {
+export default function Modal ({close,content}) {
     const [basicModal, setBasicModal] = useState(true);
 
     const toggleShow = () => setBasicModal(basicModal);
