@@ -1,12 +1,12 @@
 .Login {
     display: flex;
-    height:68vh;
+    height: 79vh;
 }
 .card {
     margin: auto; 
     border: 1px solid #f2a054;
     width : 430px;
-    height: 490px;
+    height: 422px;
     border-radius: 25px;
     padding: 1% 2.5% ;
 

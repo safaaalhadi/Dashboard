@@ -1,0 +1,28 @@
+.card {
+    padding: 2rem;
+    border: 1px solid #282828;
+    border-radius: 41px 0;
+    margin-top: 10px;
+    width: 100%;
+}
+.card .linkview {
+    color: #282828;
+    text-decoration: none;
+}
+.link {
+    display: block;
+    float: right;
+    color: #282828;
+    text-decoration: none;
+}
+.form {
+    display: flex;
+    justify-content: center;
+}
+.form .select {
+    width: 30%;
+    margin: 10% 0;
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+}

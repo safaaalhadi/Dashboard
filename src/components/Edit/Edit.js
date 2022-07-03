@@ -5,7 +5,7 @@ import Switch from '@material-ui/core/Switch';
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import style from "./Edit.module.css";
-import Resuble from "../Resuble/Resuble";
+import Modal from "../Modal/Modal";
 
 export default function Edit (){
     const [show , setShow] = useState(false);
@@ -56,7 +56,6 @@ export default function Edit (){
         setIsSubmit(true)
     }
     const valaidation = (value) =>{
-        console.log(value);
         const errors = {};
         if(!value.firstName){
             errors.firstName = "firstName is required!!";
@@ -138,7 +137,7 @@ export default function Edit (){
     }
     return(
         <>
-       <form noValidate className="px-3" style={{paddingTop:'5.1rem'}} onSubmit={handelsubmition}>
+       <form noValidate className="px-3" onSubmit={handelsubmition}>
                             <div className={style.edit}>
                                 <div className={style.card}>                         
                                     <div className="row m-0">
@@ -356,7 +355,7 @@ export default function Edit (){
                             
                             </form>
                             {
-                                show && <Resuble close ={setShow} content={contentModal}/>
+                                show && <Modal close ={setShow} content={contentModal}/>
                             }
       
     </>

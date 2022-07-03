@@ -3,10 +3,11 @@ import { Row} from "react-bootstrap";
 import axios from "axios";
 import Switch from '@material-ui/core/Switch';
 import style from "./Add.module.css";
-import Resuble from "../Resuble/Resuble";
+import Modal from "../Modal/Modal";
 
-const Add = (props) => {
+const Add = () => {
     const [show , setShow] = useState(false);
+    const [content , setContent] = useState("");
     const [formError,setFormError] = useState({});
     const [isSubmit,setIsSubmit] = useState(false);
     const [data, setData] = useState({
@@ -88,7 +89,7 @@ const Add = (props) => {
             firstName : data.firstName,
             lastName : data.lastName,  
             specification :data.specification,
-            generatedId : data.generatedId,
+            generatedId : 2,
             address : data.address,
             kpi : data.kpi,
             supervisor : data.supervisor,
@@ -103,15 +104,18 @@ const Add = (props) => {
 
         }
         await  axios.post("https://focalx-certgenerator.herokuapp.com/v1/members",body).then((res)=>{
-               console.log(res);
-                
+                document.body.style.cursor = "default";
+                console.log(res);
+                setShow(true);
+                setContent('تم اضافة موظف بنجاح');
            }).catch((err)=>{
+               document.body.style.cursor = "default";
                console.log(err);
            })
     }
     return(
         <>
-                <form noValidate className="px-3" style={{paddingTop:'5.1rem'}} onSubmit={handelsubmition}>
+                <form noValidate className="px-3"  onSubmit={handelsubmition}>
                             <div className={style.add}>
                                 <div className={style.card}>
                                    
@@ -331,6 +335,7 @@ const Add = (props) => {
                                        </div>
                                 </div>
                             </div>
+                            { show && <Modal close={setShow} content={content} />}
                             </form>
                           
         </>

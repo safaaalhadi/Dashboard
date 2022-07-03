@@ -57,12 +57,12 @@ export default function Login(){
                     <div className={style.card}>
                    <div>
                    <label>Username</label>
-                    <input type="text" name="username" value={data.username} onChange={(e)=>handleSubmet(e)} required/>
+                    <input type="text" className={style.inputs} name="username" value={data.username} onChange={(e)=>handleSubmet(e)} required/>
                    </div>
                    <span className={style.spans}>{formError.username}</span>
                     <div>
                     <label>Password</label>
-                    <input type="password" name="password" value={data.password} onChange={(e)=>handleSubmet(e)}/>
+                    <input type="password" className={style.inputs} name="password" value={data.password} onChange={(e)=>handleSubmet(e)}/>
                     <span className={style.spans}>{formError.password}</span>
                     </div>
                     <Link to="/signup" className={style.Link}>Sign up Account</Link>
