@@ -8,18 +8,11 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function ViewUser(){
     const {id} = useParams();
-    const [data,setData] = useState([]);
     const state = useSelector(state => state.allMembers);
-    // const member = state.filter((e)=> e.memberId === id);
-    // console.log(member);
-    // useEffect(()=>{
-    //     setData(member);
-    // },[member])
-    // function Handlerender(){
-    //     const member = state.filter((e)=> e.memberId === id);
-
-    // }
-    const render = data.map((user)=>{
+    const member = state.filter((e)=> e.memberId === id);
+   
+   
+    const render = member.map((user)=>{
         return(
             <div className="col-sm-4 mb-1 mt-40" key={user.memberId} >
             <div  className="card view  p-3">
@@ -36,8 +29,6 @@ export default function ViewUser(){
                <p><b style={{color:'#eb8324'}}>supervisor</b> :{user.supervisor}</p>
                <p><b style={{color:'#eb8324'}}>startDate </b>:{user.startDate}</p>
                <p><b style={{color:'#eb8324'}}>endDate </b>:{user.endDate}</p> 
-               <p><b style={{color:'#eb8324'}}>isIntern </b>:{user.isIntern}</p> 
-               <p><b style={{color:'#eb8324'}}>isEmployee </b>:{user.isEmployee}</p> 
             
 
             </div>
@@ -47,7 +38,7 @@ export default function ViewUser(){
     return(
         <>
             {
-           data.length <1 ? <CircularProgress color="inherit"/> : <div className="content" style={{paddingLeft:'30px' }}>
+           member.length <1 ? <CircularProgress color="inherit"/> : <div className="content" style={{paddingLeft:'30px' }}>
               <Row className="m-0">
               {render}
               </Row>
