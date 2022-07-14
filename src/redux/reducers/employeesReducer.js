@@ -2,7 +2,7 @@ import { adminTypes, employeesType } from "../contants/employeesType";
 
 
 const allEmployees = [];
-const  isAdmin = true;
+const  isAdmin = {};
 export const SetEmployeesReducer = (state = allEmployees,{ type, payload }) => {
   switch (type) {
     case employeesType.SET_EMPLOYEES:
@@ -14,10 +14,10 @@ export const SetEmployeesReducer = (state = allEmployees,{ type, payload }) => {
 };
 
 
-export const setAdmin = (state = isAdmin,{type ,allow})=> {
+export const setAdmin = (state = isAdmin,{type ,payload})=> {
   switch (type) {
     case adminTypes.SET_ADMIN:
-      return allow;
+      return {allow: true, ...payload};
       default:
         return state;
   }

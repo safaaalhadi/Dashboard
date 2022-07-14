@@ -1,4 +1,4 @@
-import { employeesType } from "../contants/employeesType";
+import { adminTypes, employeesType } from "../contants/employeesType";
 
 export const setEmployees = (payload) => {
   return {
@@ -6,4 +6,9 @@ export const setEmployees = (payload) => {
     payload: payload,
   };
 };
-
+export const setAdmin = (payload) => {
+  return {
+    type: adminTypes.SET_ADMIN,
+    payload: payload,
+  }
+}

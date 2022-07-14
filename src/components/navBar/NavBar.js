@@ -14,10 +14,10 @@ const NavBar = () => {
           <img  src={require('../images/logo.svg').default}  alt="logo"/>
            <p>Go Home</p>
            <span>
-             {isAdminFromRedux && <Link to="add" className={style.linkAdd}>add member</Link>}
+             {isAdminFromRedux.allow && <Link to="add" className={style.linkAdd}>add member</Link>}
           </span>
           <span>
-          {isAdminFromRedux &&<Link to="user"className={style.linkEdit}>Members</Link>}
+          {isAdminFromRedux.allow &&<Link to="user"className={style.linkEdit}>Members</Link>}
           </span>
         </div>
         <div className={style.contact}>

@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import style from "./Login.module.css";
+import { useDispatch } from "react-redux";
+import { setAdmin } from "../../redux/action/employeesAction";
 
 export default function Login() {
+  const dispatch = useDispatch()
   const [formError, setFormError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [data, setData] = useState({
@@ -40,18 +43,19 @@ export default function Login() {
     return errors;
   };
   const sendData = async () => {
-    let body = {
-      username: data.username,
-      password: data.password,
-    };
-    await axios
-      .post("https://focalx-certgenerator.herokuapp.com/v1/auth/signin", body)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(setAdmin({isLogin: "admin"}));
+    // let body = {
+    //   username: data.username,
+    //   password: data.password,
+    // };
+    // await axios
+    //   .post("https://focalx-certgenerator.herokuapp.com/v1/auth/signin", body)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
   return (
     <>

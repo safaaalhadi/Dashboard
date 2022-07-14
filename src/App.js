@@ -12,12 +12,14 @@ import { setEmployees } from "../src/redux/action/employeesAction";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp"
 import ViewUser from "./components/User/ViewUser";
+import Page404 from "./components/page404/Page404";
 
 
 function App() {
   const dispatch = useDispatch();
-  
-  const employeesFromRed = useSelector((state) => state.allMembers);
+const allow = useSelector((state) => state.isAdmin)  
+console.log(allow.allow ? "allow" : "not allow");
+console.log(allow);
   const fetchEmployees = async () => {
     await axios
       .get("https://focalx-certgenerator.herokuapp.com/v1/members")
@@ -27,21 +29,32 @@ function App() {
   useEffect(() => {
     fetchEmployees();
   }, []);
-  const employees = employeesFromRed.filter((emp) => emp.isEmployee === true);
-  const inters = employeesFromRed.filter((inters) => inters.isIntern === true);
-  console.log(employeesFromRed);
   return ( 
     <div className="App">
       <BrowserRouter basename="/dashboard">
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />}/>
+          {!allow.allow &&(
+            <>
           <Route path="/login" element={<Login />}/>
-          <Route path="/signup" element={<SignUp />}/>
+          <Route path="/signup" element={<SignUp />}/>  
+            </>
+          )
+          
+          }
+          
+          {allow.allow && (
+            <>
+          <Route path="/viewMember/:id" element={<ViewUser />}/>
           <Route path="/add" element={<Add />}/>
           <Route path="/user" element={<User />}/>
           <Route path="/edit/:id" element={<Edit />}/>
-          <Route path="/viewMember/:id" element={<ViewUser />}/>
+          </>
+          )
+          }
+          <Route path="*" element={<Page404 />} />
+          
         </Routes>
         
       </BrowserRouter>
