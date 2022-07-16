@@ -44,20 +44,32 @@ export default function Login() {
   };
   const sendData = async () => {
     dispatch(setAdmin({ isLogin: "admin" }));
-    let body = {
-      username: data.username,
-      password: data.password,
-    };
-    await axios
-      .post("https://focalx-certgenerator.herokuapp.com/v1/auth/signin", body)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // let body = {
+    //   username: data.username,
+    //   password: data.password,
+    // };
+    // await axios
+    //   .post("https://focalx-certgenerator.herokuapp.com/v1/auth/signin", body)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
   return (
+    // let body = {
+    //   username: data.username,
+    //   password: data.password,
+    // };
+    // await axios
+    //   .post("https://focalx-certgenerator.herokuapp.com/v1/auth/signin", body)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
     <>
       <form noValidate onSubmit={handleSubmition}>
         <div className={style.Login}>
