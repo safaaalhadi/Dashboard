@@ -58,18 +58,6 @@ export default function Login() {
     //   });
   };
   return (
-    // let body = {
-    //   username: data.username,
-    //   password: data.password,
-    // };
-    // await axios
-    //   .post("https://focalx-certgenerator.herokuapp.com/v1/auth/signin", body)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
     <>
       <form noValidate onSubmit={handleSubmition}>
         <div className={style.Login}>

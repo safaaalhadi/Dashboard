@@ -1,9 +1,8 @@
-   .contenar {
-    position: relative;
-    height: calc(100vh - 90px);
-  }
- 
-   
+.contenar {
+  position: relative;
+  height: calc(100vh - 90px);
+}
+
 .contenar .content {
   position: absolute;
   top: 50%;
@@ -24,18 +23,16 @@
   margin-bottom: 16px;
   width: 359px;
 }
-.contenar .content .paragraph{
+.contenar .content .paragraph {
   margin-top: -16px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 18px;
   color: #282828;
-  
-  }
+}
 .contenar .content .input {
   width: 100%;
   position: relative;
   margin-top: 16px;
-
 }
 
 .contenar .content .input input {
@@ -45,27 +42,30 @@
   border-radius: 18px;
   padding-left: 35px;
 }
+.contenar .content .input input:focus {
+  border: none;
+}
 .contenar .content .input span {
   position: absolute;
   right: 5px;
   top: 14px;
-  padding:0 16px 24px 12px;
+  padding: 0 16px 24px 12px;
   margin: -5px 0;
 }
 .contenar .content .input p {
   position: absolute;
   right: 44px;
   top: 14px;
-  padding:0 12px ;
+  padding: 0 12px;
   height: 33px;
   margin: -5px 0;
 }
-@media (max-width:540px) {
+@media (max-width: 540px) {
   .contenar .content .pattren {
     display: none;
   }
 }
-@media (max-width:490px) {
+@media (max-width: 490px) {
   .contenar {
     left: 15px;
   }
@@ -81,12 +81,12 @@
   .contenar .content .logo img {
     width: 295px;
   }
-  .contenar .content .paragraph{
+  .contenar .content .paragraph {
     font-size: 15px;
     top: 95px;
   }
 }
-@media (max-width:360px) {
+@media (max-width: 360px) {
   .contenar {
     left: 18px;
   }
@@ -102,7 +102,7 @@
   .contenar .content .logo img {
     width: 256px;
   }
-  .contenar .content .paragraph{
+  .contenar .content .paragraph {
     font-size: 13px;
   }
 }
