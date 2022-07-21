@@ -7,7 +7,7 @@ const Home = () => {
   const [filter , setFilter] = useState([]);
   const [search, setSearch] = useState('');
   const state = useSelector(state => state.allMembers);
-
+console.log(state);
    
     const handleChange = (text) =>{
       let method=[];
@@ -26,34 +26,6 @@ const Home = () => {
   
     }
   return ( 
-  // <div className={style.content}>
-  //   <div className={style.app}>
-  //             <div className={style.appTwo}>
-  //             <div className={style.mar}>
-  //                     <img className={style.imgTwo} src={require('../img/focal X - Halftone Pattern.svg').default} height="396.57px" alt=""/>
-  //                  </div>
-  //                <div className={style.top}>
-  //                <p className={style.paragraph}>Search By Name Or Certificate ID Number</p>
-  //                 <div className={style.box}>
-  //                     <input  type="search" placeholder="Search For Employee's Or Intern's" value={search} onChange={(e) => handleChange(e.target.value)}/>
-  //                     <i><img src={require('../img/search.svg').default}/></i>
-  //                 </div>
-  //                </div>
-          //        <div>
-          //        {filter && filter.map((e,i)=>
-          //         <>
-          //         <div className={style.Filt}>
-          //         <div className={style.filter} onClick={()=>onFilterHandle(e.firstName)} key={i}>{e.firstName }  {e.lastName}</div>
-          //         </div>
-          //           </>
-          //           )}
-          // </div>
-  //             </div>
-  //         </div>
-
-  //         <Footer />
-
-  //   </div>
   <div className={style.contenar}>
     <div className={style.content}>
       <div className={style.pattren}>

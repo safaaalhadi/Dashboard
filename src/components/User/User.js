@@ -1,12 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setEmployees } from "../../redux/action/employeesAction";
 import style from "./User.module.css";
+import { useCookies } from "react-cookie";
 
 const Users = () => {
+  const [cookies] = useCookies("token")
+  const dispatch = useDispatch();
   const [member, setMember] = useState([]);
   const state = useSelector((state) => state.allMembers);
+  const fetchEmployees = async () => {
+    await axios
+      .get("https://focalx-cert-generator.herokuapp.com/v1/members",{
+        headers:{
+          Authorization: "bearer "+ cookies.token
+        }
+      })
+      .then((res) => dispatch(setEmployees(res.data)))
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    fetchEmployees();
+  }, []);
 
   useEffect(() => {
     setMember(state);

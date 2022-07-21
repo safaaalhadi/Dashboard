@@ -2,10 +2,12 @@ import React, { useEffect, useState, createContext } from "react";
 import { Row } from "react-bootstrap";
 import axios from "axios";
 import Switch from "@material-ui/core/Switch";
+import { useCookies } from "react-cookie";
 import style from "./Add.module.css";
 import Modal from "../Modal/Modal";
 
 const Add = () => {
+  const [cookies] = useCookies("token")
   const [show, setShow] = useState(false);
   const [content, setContent] = useState("");
   const [formError, setFormError] = useState({});
@@ -103,7 +105,11 @@ const Add = () => {
       isIntern: data.isIntern,
     };
     await axios
-      .post("https://focalx-certgenerator.herokuapp.com/v1/members", body)
+      .post("https://focalx-cert-generator.herokuapp.com/v1/members", body,{
+        headers:{
+          Authorization: "bearer "+ cookies.token
+        }
+      })
       .then((res) => {
         document.body.style.cursor = "default";
         console.log(res);

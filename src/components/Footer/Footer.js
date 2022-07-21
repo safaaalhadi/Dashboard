@@ -35,7 +35,7 @@ const Footer = () => {
            <footer className={style.footer}>
            <div className={style.contact}>
            <p>
-            <span><b>Join US : hr@focal-x.com</b></span>
+            <span><b>Join US :</b> hr@focal-x.com</span>
           </p>
           </div>
           <div className={style.contents}>

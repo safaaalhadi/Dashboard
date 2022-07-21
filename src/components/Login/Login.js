@@ -4,14 +4,18 @@ import axios from "axios";
 import style from "./Login.module.css";
 import { useDispatch } from "react-redux";
 import { setAdmin } from "../../redux/action/employeesAction";
+import {useNavigate} from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
 export default function Login() {
-  const dispatch = useDispatch()
+  const [cookies,setCookie] = useCookies(['token']);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [formError, setFormError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [data, setData] = useState({
-    username: "sana",
-    password: "123456789",
+    username: "admin",
+    password: "IdV$Ju84q3360Sq",
   });
   const handleSubmet = (e) => {
     // console.log(e);
@@ -43,19 +47,21 @@ export default function Login() {
     return errors;
   };
   const sendData = async () => {
-    dispatch(setAdmin({isLogin: "admin"}));
-    // let body = {
-    //   username: data.username,
-    //   password: data.password,
-    // };
-    // await axios
-    //   .post("https://focalx-certgenerator.herokuapp.com/v1/auth/signin", body)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    let body = {
+      username: data.username,
+      password: data.password,
+    };
+    await axios
+      .post("https://focalx-cert-generator.herokuapp.com/v1/auth/signin", body)
+      .then((res) => {
+        console.log(res);
+        navigate("/");
+        setCookie('token',res.data.token, {path:'/'})
+        dispatch(setAdmin({isLogin: "admin"}));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <>

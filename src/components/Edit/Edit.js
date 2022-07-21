@@ -4,10 +4,12 @@ import axios from "axios";
 import Switch from '@material-ui/core/Switch';
 import {useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
+import { useCookies } from "react-cookie";
 import style from "./Edit.module.css";
 import Modal from "../Modal/Modal";
 
 export default function Edit (){
+    const [cookies] = useCookies("token")
     const [show , setShow] = useState(false);
     const [contentModal, setContentModal]= useState("")
     const [formError,setFormError] = useState({});
@@ -120,7 +122,11 @@ export default function Edit (){
             startDate : data.startDate,
             endDate : data.endDate,
         }
-        await axios.put('https://focalx-certgenerator.herokuapp.com/v1/members',body).then((res)=>{
+        await axios.put('https://focalx-cert-generator.herokuapp.com/v1/members',body,{
+            headers:{
+                Authorization: "bearer "+ cookies.token
+              }
+        }).then((res)=>{
             
         setContentModal("لقد تمت اضافة الموظف بنجاح")
         console.log(res);

@@ -5,10 +5,8 @@ import NavBar from "./components/navBar/NavBar";
 import Add from "./components/Add/Add"; 
 import User from "./components/User/User" ;  
 import Edit from "./components/Edit/Edit" ;  
-import React, { useEffect } from "react";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { setEmployees } from "../src/redux/action/employeesAction";
+import React from "react";
+import { useSelector } from "react-redux";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp"
 import ViewUser from "./components/User/ViewUser";
@@ -16,19 +14,11 @@ import Page404 from "./components/page404/Page404";
 
 
 function App() {
-  const dispatch = useDispatch();
+  
 const allow = useSelector((state) => state.isAdmin)  
 console.log(allow.allow ? "allow" : "not allow");
 console.log(allow);
-  const fetchEmployees = async () => {
-    await axios
-      .get("https://focalx-certgenerator.herokuapp.com/v1/members")
-      .then((res) => dispatch(setEmployees(res.data)))
-      .catch((err) => console.log(err));
-  };
-  useEffect(() => {
-    fetchEmployees();
-  }, []);
+
   return ( 
     <div className="App">
       <BrowserRouter basename="/dashboard">
