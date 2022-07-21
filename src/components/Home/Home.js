@@ -1,6 +1,6 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import style from "./Home.module.css";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import Footer from "../Footer/Footer";
 
 const Home = () => {
@@ -42,20 +42,24 @@ console.log(state);
           <span><img src={require('../images/search.svg').default}/></span>
         </div>
        
-      </div>
-      <div>
-                 {filter && filter.map((e,i)=>
-                  <>
-                  <div className={style.Filt}>
-                  <div className={style.filter} onClick={()=>onFilterHandle(e.firstName)} key={i}>{e.firstName }  {e.lastName}</div>
+        <div>
+          {filter &&
+            filter.map((e, i) => (
+              <>
+                <div className={style.Filt}>
+                  <div className={style.filter} onClick={() => onFilterHandle(e.firstName)} key={i}>
+                    {e.firstName} {e.lastName}
                   </div>
-                    </>
-                    )}
-          </div>
+                </div>
+              </>
+            ))}
+        </div>
+      </div>
+      </div>
+      <Footer />
+    
     </div>
-    <Footer />
-  </div>
-    );
+  );
 };
 
 export default Home;
