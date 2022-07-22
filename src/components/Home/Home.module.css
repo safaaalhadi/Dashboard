@@ -60,6 +60,12 @@
   height: 33px;
   margin: -5px 0;
 }
+.contenar .filter {
+  display: grid;
+  justify-content: center;
+  position: relative;
+  top: 190px;
+}
 @media (max-width: 540px) {
   .contenar .content .pattren {
     display: none;
@@ -105,4 +111,7 @@
   .contenar .content .paragraph {
     font-size: 13px;
   }
+}
+span.search{
+  cursor: pointer;
 }
