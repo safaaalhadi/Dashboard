@@ -5,9 +5,14 @@ import Pdf from "react-to-pdf";
 
 const Certificate = () => {
   const ref = React.createRef();
+  const options = {
+    orientation: "portrait",
+    unit: "px",
+    format: [1366, 900],
+  };
   return (
     <>
-      <Pdf targetRef={ref} filename="test.pdf">
+      <Pdf targetRef={ref} filename="test.pdf" options={options}>
         {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
       </Pdf>
       <div className={style.pdf} ref={ref}>
@@ -17,7 +22,7 @@ const Certificate = () => {
           </div>
           <div className="col-sm-5"></div>
           <div className="col-sm-4 p-5">
-            <img className={style.image} src="img/img.png" alt="logo" />
+            <img className={style.image} src="img/img.svg" alt="logo" />
           </div>
         </Row>
         <Row className="m-0">
