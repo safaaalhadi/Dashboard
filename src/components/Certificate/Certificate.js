@@ -2,18 +2,32 @@ import React from "react";
 import { Row } from "react-bootstrap";
 import style from "./Pdf.module.css";
 import Pdf from "react-to-pdf";
+import { useSelector } from "react-redux/es/exports";
 
 const Certificate = () => {
+  const member = useSelector((state) => state.member);
+  console.log(member);
   const ref = React.createRef();
   const options = {
-    orientation: "portrait",
+    orientation: "Portrait ",
     unit: "px",
-    format: [1366, 900],
+    format: [400, 400],
   };
   return (
     <>
-      <Pdf targetRef={ref} filename="test.pdf" options={options}>
-        {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+      <Pdf
+        targetRef={ref}
+        filename={`Crtificates ${member.firstName} ${member.lastName} FocalX.pdf`}
+        options={options}
+        x={27}
+        y={20}
+        scale={0.5}
+      >
+        {({ toPdf }) => (
+          <button onClick={toPdf} className={style.btn}>
+            Generate Pdf
+          </button>
+        )}
       </Pdf>
       <div className={style.pdf} ref={ref}>
         <Row className="m-0">
@@ -28,11 +42,13 @@ const Certificate = () => {
         <Row className="m-0">
           <div className="col-sm-7 p-5">
             <p className={style.paragraph}>This is to certify that</p>
-            <h1>bla bla</h1>
+            <h1>
+              {member.firstName} {member.lastName}
+            </h1>
             <p className={style.paragraph}>
               successfully completed three months internship program and received passing grades for certificate in
             </p>
-            <h1>bla bla </h1>
+            <h1>{member.specification} </h1>
             <p className={style.paragraph}>
               a program offered by <b>focal X agency.</b>
             </p>

@@ -10,5 +10,11 @@ export const setAdmin = (payload) => {
   return {
     type: adminTypes.SET_ADMIN,
     payload: payload,
-  }
-}
+  };
+};
+export const setMember = (payload) => {
+  return {
+    type: employeesType.SET_MEMBER,
+    payload: payload,
+  };
+};

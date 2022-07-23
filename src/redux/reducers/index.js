@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import { setAdmin, SetEmployeesReducer } from "./employeesReducer";
+import { setAdmin, SetEmployeesReducer, setMember } from "./employeesReducer";
 
 const reducer = combineReducers({
   allMembers: SetEmployeesReducer,
-  isAdmin : setAdmin,
-
+  isAdmin: setAdmin,
+  member: setMember,
 });
 
 export default reducer;
