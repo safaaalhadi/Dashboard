@@ -1,26 +1,34 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import React, { useEffect } from "react";
+import { BrowserRouter } from "react-router-dom";
 import NavBar from "./components/navBar/NavBar";
-import Add from "./components/Add/Add"; 
-import User from "./components/User/User" ;  
-import Edit from "./components/Edit/Edit" ;  
-import React from "react";
-import { useSelector } from "react-redux";
-import Login from "./components/Login/Login";
-import SignUp from "./components/SignUp/SignUp"
-import ViewUser from "./components/User/ViewUser";
-import Page404 from "./components/page404/Page404";
-import CheakAllow from "./hooks/CheakAllow"
-
+import { useSelector, useDispatch } from "react-redux";
+import { setAdmin } from "./redux/action/employeesAction";
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import CheakAllow from "./hooks/CheakAllow";
 
 function App() {
-  
-const allow = useSelector((state) => state.isAdmin)  
-console.log(allow.allow ? "allow" : "not allow");
-console.log(allow);
+  const [cookies] = useCookies("token");
+  const dispatch = useDispatch();
+  const allow = useSelector((state) => state.isAdmin);
+  console.log(allow.allow ? "allow" : "not allow");
+  console.log(allow);
+  console.log(cookies.token);
+  const fetchEmployees = async () => {
+    await axios
+      .get("https://focalx-cert-generator.herokuapp.com/v1/members", {
+        headers: {
+          Authorization: "bearer " + cookies.token,
+        },
+      })
+      .then((res) => dispatch(setAdmin({ isLogin: "admin" })));
+  };
+  useEffect(() => {
+    fetchEmployees();
+  }, []);
 
-  return ( 
+  return (
     <div className="App">
       <BrowserRouter basename="/dashboard">
         <NavBar />

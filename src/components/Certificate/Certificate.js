@@ -69,7 +69,7 @@ const Certificate = () => {
                 <h6 className="mt-2">Scan To Search</h6>
                 <p className="m-1">Issued May 2022</p>
                 <p className="m-0">VALID CERTIFICATE ID</p>
-                <p className="mb-4">4ASD4A8D8DAF4ADFZ8</p>
+                <p className="mb-4">{member.generatedId}</p>
               </div>
             </Row>
           </div>
