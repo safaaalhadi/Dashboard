@@ -15,11 +15,13 @@
     width: 75px;
     margin-top: -14px;
   }
-  .contenar nav.nav .logo p {
+  .contenar nav.nav .logo  .link {
     font-size: 18px;
     margin-left: 30px;
     padding-top: 7px;
     margin-bottom: 0;
+    color: #282828;
+    text-decoration: none;
   }
   .contenar nav.nav .logo span .linkAdd {
     margin-top : 0px;

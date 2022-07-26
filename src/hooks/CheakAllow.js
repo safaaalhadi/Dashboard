@@ -9,7 +9,6 @@ import SignUp from "../components/SignUp/SignUp";
 import ViewUser from "../components/User/ViewUser";
 import Page404 from "../components/page404/Page404";
 import Certificate from "../components/Certificate/Certificate";
-import Test from "../components/Certificate/test";
 import { useSelector } from "react-redux";
 
 const CheakAllow = () => {
@@ -19,7 +18,6 @@ const CheakAllow = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pdf" element={<Certificate />} />
-        <Route path="/test" element={<Test />} />
         {!allow.allow && (
           <>
             <Route path="/login" element={<Login />} />
