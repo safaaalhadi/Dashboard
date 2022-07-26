@@ -4,11 +4,13 @@ import axios from "axios";
 import style from "./Login.module.css";
 import { useDispatch } from "react-redux";
 import { setAdmin } from "../../redux/action/employeesAction";
-import {useNavigate} from "react-router-dom";
-import { useCookies } from 'react-cookie';
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 export default function Login() {
-  const [cookies,setCookie] = useCookies(['token']);
+  const [show, setShow] = useState(false);
+  const [content, setContent] = useState("");
+  const [cookies, setCookie] = useCookies(["token"]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formError, setFormError] = useState({});
@@ -56,11 +58,17 @@ export default function Login() {
       .then((res) => {
         console.log(res);
         navigate("/");
-        setCookie('token',res.data.token, {path:'/'})
-        dispatch(setAdmin({isLogin: "admin"}));
+        setCookie("token", res.data.token, { path: "/" });
+        dispatch(setAdmin({ isLogin: "admin" }));
+        document.body.style.cursor = "default";
+        setShow(true);
+        setContent("تم تسجيل دخول بنجاح");
       })
       .catch((err) => {
         console.log(err);
+        document.body.style.cursor = "default";
+        setShow(true);
+        setContent("تأكد من الإتصال بالإنترنت");
       });
   };
   return (
@@ -78,9 +86,6 @@ export default function Login() {
               <input type="password" name="password" value={data.password} onChange={(e) => handleSubmet(e)} />
               <span className={style.spans}>{formError.password}</span>
             </div>
-            <Link to="/signup" className={style.Link}>
-              Sign up Account
-            </Link>
             <input type="submit" className={style.button} value="Login" />
           </div>
         </div>

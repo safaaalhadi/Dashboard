@@ -15,27 +15,23 @@ const Add = () => {
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
-    address: "",
     specification: "",
-    supervisor: "",
+    address: "",
     kpi: 0,
-    isEmployee: Boolean(),
-    isIntern: Boolean(),
-    hardSkills: [],
-    softSkills: [],
-    projects: [],
+    supervisor: "",
     duration: 0,
     startDate: "",
     endDate: "",
+    projects: [],
+    hardSkills: [],
+    softSkills: [],
+    isEmployee: Boolean(),
+    isIntern: Boolean(),
   });
 
   const handelSubmet = (e) => {
     const { name, value } = e.target;
-    if (name === "projects" || name === "hardSkills" || name === "softSkills") {
-      setData((prevstate) => ({ ...prevstate, [name]: value.split(",") }));
-    } else {
-      setData((prevstate) => ({ ...prevstate, [name]: value }));
-    }
+    setData((prevstate) => ({ ...prevstate, [name]: value }));
     console.log(data);
   };
   const handelsubmition = (e) => {
@@ -90,49 +86,28 @@ const Add = () => {
     }
   }, [formError]);
   const sendData = async (e) => {
-    document.body.style.cursor = "wait";
-    const body = {
+    let body = {
       firstName: data.firstName,
       lastName: data.lastName,
-      address: data.address,
       specification: data.specification,
-      supervisor: data.supervisor,
+      address: data.address,
       kpi: data.kpi,
-      isEmployee: data.isEmployee,
-      isIntern: data.isIntern,
-      hardSkills: data.hardSkills,
-      softSkills: data.softSkills,
-      projects: data.projects,
+      supervisor: data.supervisor,
       duration: data.duration,
       startDate: data.startDate,
       endDate: data.endDate,
+      projects: data.projects.split(","),
+      hardSkills: data.hardSkills.split(","),
+      softSkills: data.softSkills.split(","),
+      isEmployee: data.isEmployee,
+      isIntern: data.isIntern,
     };
-    console.log(JSON.stringify(body));
     await axios
-      .post(
-        "https://focalx-cert-generator.herokuapp.com/v1/members",
-        {
-          firstName: "Nour222",
-          lastName: "kh",
-          address: "fixed address",
-          specification: "web developer",
-          supervisor: "Alaa Drebate",
-          kpi: 1,
-          isEmployee: false,
-          isIntern: true,
-          hardSkills: ["Wen dev", "web design"],
-          softSkills: ["Wen dev", "web design"],
-          projects: ["project 1", "project 2"],
-          duration: 12,
-          startDate: "2022-1-1",
-          endDate: "2022-5-1",
+      .post("https://focalx-cert-generator.herokuapp.com/v1/members", body, {
+        headers: {
+          Authorization: "bearer " + cookies.token,
         },
-        {
-          headers: {
-            Authorization: "bearer " + cookies.token,
-          },
-        }
-      )
+      })
       .then((res) => {
         document.body.style.cursor = "default";
         console.log(res);
@@ -142,6 +117,8 @@ const Add = () => {
       .catch((err) => {
         document.body.style.cursor = "default";
         console.log(err);
+        setShow(true);
+        setContent(" تأكد من الاتصال بالانترنت ");
       });
   };
   return (

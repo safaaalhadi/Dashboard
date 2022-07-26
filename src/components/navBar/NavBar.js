@@ -10,7 +10,6 @@ const NavBar = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const isAdminFromRedux = useSelector((state) => state.isAdmin);
   const logout = () => {
-    console.log("test");
     removeCookie("token", { path: "/" });
     navigate("/");
   };
@@ -24,7 +23,7 @@ const NavBar = () => {
               Go Home
             </Link>
           ) : (
-            <Link to="https://www.focal.com">Go Home</Link>
+            <Link to="https://www.focal-x.com">Go Home</Link>
           )}
           <span>
             {isAdminFromRedux.allow && (
