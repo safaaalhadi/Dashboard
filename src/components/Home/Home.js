@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import style from "./Home.module.css";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setMember } from "../../redux/action/employeesAction";
@@ -48,7 +49,7 @@ const Home = () => {
         <div>
           <div className={style.input}>
             <input
-              type="search"
+              type="text"
               placeholder="Search For Employee's Or Intern's"
               onChange={(e) => handleChange(e.target.value)}
               className="input"
@@ -59,6 +60,7 @@ const Home = () => {
             </span>
           </div>
         </div>
+        <Link to="/login">log in</Link>
       </div>
       <Footer />
     </div>

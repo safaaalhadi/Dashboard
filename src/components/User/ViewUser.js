@@ -5,19 +5,17 @@ import { Row } from "reactstrap";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import style from "./User.module.css";
 
-
-
 export default function ViewUser() {
   const { id } = useParams();
   const [data, setData] = useState({});
   const state = useSelector((state) => state.allMembers);
   const member = state.find((e) => e.memberId === id);
- 
+
   useEffect(() => {
     setData(member);
     console.log(member);
   }, [state]);
-
+  console.log(data);
 
   return (
     <>
@@ -28,16 +26,16 @@ export default function ViewUser() {
           <Row className="m-0">
             <div className="col-md-4 mb-1  m-auto" key={data.memberId}>
               <div className={style.card}>
-              <p>
-              <b style={{ color: "#eb8324" }}>Name : </b>
-              {data.firstName} {data.lastName}
-            </p>
+                <p>
+                  <b style={{ color: "#eb8324" }}>Name : </b>
+                  {data.firstName} {data.lastName}
+                </p>
                 <p>
                   <b style={{ color: "#eb8324" }}>memberId</b> :{data.memberId}
                 </p>
-                <p>
+                {/* <p>
                   <b style={{ color: "#eb8324" }}>generatedId </b>:{data.generatedId}
-                </p>
+                </p> */}
                 <p>
                   <b style={{ color: "#eb8324" }}>specification </b> :{data.specification}
                 </p>

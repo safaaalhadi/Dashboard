@@ -7,7 +7,7 @@ import style from "./Add.module.css";
 import Modal from "../Modal/Modal";
 
 const Add = () => {
-  const [cookies] = useCookies("token")
+  const [cookies] = useCookies("token");
   const [show, setShow] = useState(false);
   const [content, setContent] = useState("");
   const [formError, setFormError] = useState({});
@@ -15,23 +15,27 @@ const Add = () => {
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
-    specification: "",
     address: "",
-    kpi: 0,
+    specification: "",
     supervisor: "",
+    kpi: 0,
+    isEmployee: Boolean(),
+    isIntern: Boolean(),
+    hardSkills: [],
+    softSkills: [],
+    projects: [],
     duration: 0,
     startDate: "",
     endDate: "",
-    projects: [],
-    hardSkills: [],
-    softSkills: [],
-    isEmployee: Boolean(),
-    isIntern: Boolean(),
   });
 
   const handelSubmet = (e) => {
     const { name, value } = e.target;
-    setData((prevstate) => ({ ...prevstate, [name]: value }));
+    if (name === "projects" || name === "hardSkills" || name === "softSkills") {
+      setData((prevstate) => ({ ...prevstate, [name]: value.split(",") }));
+    } else {
+      setData((prevstate) => ({ ...prevstate, [name]: value }));
+    }
     console.log(data);
   };
   const handelsubmition = (e) => {
@@ -86,28 +90,49 @@ const Add = () => {
     }
   }, [formError]);
   const sendData = async (e) => {
-    let body = {
+    document.body.style.cursor = "wait";
+    const body = {
       firstName: data.firstName,
       lastName: data.lastName,
-      specification: data.specification,
       address: data.address,
-      kpi: data.kpi,
+      specification: data.specification,
       supervisor: data.supervisor,
+      kpi: data.kpi,
+      isEmployee: data.isEmployee,
+      isIntern: data.isIntern,
+      hardSkills: data.hardSkills,
+      softSkills: data.softSkills,
+      projects: data.projects,
       duration: data.duration,
       startDate: data.startDate,
       endDate: data.endDate,
-      projects: data.projects.split(","),
-      hardSkills: data.hardSkills.split(","),
-      softSkills: data.softSkills.split(","),
-      isEmployee: data.isEmployee,
-      isIntern: data.isIntern,
     };
+    console.log(JSON.stringify(body));
     await axios
-      .post("https://focalx-cert-generator.herokuapp.com/v1/members", body,{
-        headers:{
-          Authorization: "bearer "+ cookies.token
+      .post(
+        "https://focalx-cert-generator.herokuapp.com/v1/members",
+        {
+          firstName: "Nour222",
+          lastName: "kh",
+          address: "fixed address",
+          specification: "web developer",
+          supervisor: "Alaa Drebate",
+          kpi: 1,
+          isEmployee: false,
+          isIntern: true,
+          hardSkills: ["Wen dev", "web design"],
+          softSkills: ["Wen dev", "web design"],
+          projects: ["project 1", "project 2"],
+          duration: 12,
+          startDate: "2022-1-1",
+          endDate: "2022-5-1",
+        },
+        {
+          headers: {
+            Authorization: "bearer " + cookies.token,
+          },
         }
-      })
+      )
       .then((res) => {
         document.body.style.cursor = "default";
         console.log(res);
