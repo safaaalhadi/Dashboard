@@ -23,7 +23,9 @@ const NavBar = () => {
               Go Home
             </Link>
           ) : (
-            <Link to="https://www.focal-x.com">Go Home</Link>
+            <Link to="https://www.focal-x.com" className={style.link}>
+              Go Home
+            </Link>
           )}
           <span>
             {isAdminFromRedux.allow && (
