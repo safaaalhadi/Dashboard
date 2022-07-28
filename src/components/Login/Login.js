@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { setAdmin } from "../../redux/action/employeesAction";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import Modal from "../Modal/Modal";
+import { set } from "react-hook-form";
 
 export default function Login() {
   const [show, setShow] = useState(false);
@@ -39,7 +41,6 @@ export default function Login() {
   const validation = (value) => {
     // console.log("vvvvv",value);
     const errors = {};
-    console.log(data.username.length);
     if (!value.username) {
       errors.username = "username is required !!";
     }
@@ -49,6 +50,7 @@ export default function Login() {
     return errors;
   };
   const sendData = async () => {
+    document.body.style.cursor = "wait";
     let body = {
       username: data.username,
       password: data.password,
@@ -61,14 +63,16 @@ export default function Login() {
         setCookie("token", res.data.token, { path: "/" });
         dispatch(setAdmin({ isLogin: "admin" }));
         document.body.style.cursor = "default";
-        setShow(true);
-        setContent("تم تسجيل دخول بنجاح");
       })
       .catch((err) => {
-        console.log(err);
-        document.body.style.cursor = "default";
+        console.log(err.response.data.error);
         setShow(true);
-        setContent("تأكد من الإتصال بالإنترنت");
+        if (err.response.data.error == "wrong username or password") {
+          document.body.style.cursor = "default";
+          setContent("wrong username or password");
+        } else {
+          setContent("error conenction");
+        }
       });
   };
   return (
@@ -90,6 +94,7 @@ export default function Login() {
           </div>
         </div>
       </form>
+      {show && <Modal close={setShow} content={content} />}
     </>
   );
 }

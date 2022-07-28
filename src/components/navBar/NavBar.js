@@ -11,7 +11,7 @@ const NavBar = () => {
   const isAdminFromRedux = useSelector((state) => state.isAdmin);
   const logout = () => {
     removeCookie("token", { path: "/" });
-    navigate("/");
+    window.location.href = "www.google.com";
   };
   return (
     <div className={style.contenar}>
@@ -23,9 +23,9 @@ const NavBar = () => {
               Go Home
             </Link>
           ) : (
-            <Link to="https://www.focal-x.com" className={style.link}>
+            <a href="https://www.focal-x.com" className={style.link}>
               Go Home
-            </Link>
+            </a>
           )}
           <span>
             {isAdminFromRedux.allow && (
@@ -41,7 +41,13 @@ const NavBar = () => {
               </Link>
             )}
           </span>
-          <span>{isAdminFromRedux.allow && <button onClick={logout}>Logout</button>}</span>
+          <span>
+            {isAdminFromRedux.allow && (
+              <p className={style.logout} onClick={logout}>
+                Logout
+              </p>
+            )}
+          </span>
         </div>
         <div className={style.contact}>
           <p>
