@@ -66,18 +66,19 @@ export default function Login() {
       })
       .catch((err) => {
         console.log(err.response.data.error);
+        console.log("errrrrr");
         setShow(true);
-        if (err.response.data.error == "wrong username or password") {
+        if (err.response.data.error === "wrong username or password") {
           document.body.style.cursor = "default";
           setContent("wrong username or password");
         } else {
-          setContent("error conenction");
+          setContent("cheak internet connection");
         }
       });
   };
   return (
     <>
-      <form noValidate onSubmit={handleSubmition}>
+      <form noValidate onSubmit={handleSubmition} readOnly>
         <div className={style.Login}>
           <div className={style.card}>
             <div>

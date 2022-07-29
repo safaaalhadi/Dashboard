@@ -5,13 +5,14 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setMember } from "../../redux/action/employeesAction";
+import Modal from "../Modal/Modal";
 import Footer from "../Footer/Footer";
 
 const Home = () => {
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [url, setUrl] = useState("");
-  const [state, setState] = useState({});
 
   const handleChange = (text) => {
     const type = text.includes(" ");
@@ -28,11 +29,11 @@ const Home = () => {
       .get(`https://focalx-cert-generator.herokuapp.com/v1/members/${url}`)
       .then((res) => {
         dispatch(setMember(res.data));
-        setState(res.data);
         navigate("/pdf");
       })
       .catch((err) => {
         console.log(err);
+        setShow(true);
       });
   };
 
@@ -63,6 +64,7 @@ const Home = () => {
         <Link to="/login">log in</Link>
       </div>
       <Footer />
+      {show && <Modal close={setShow} content="NOT FOUND" />}
     </div>
   );
 };

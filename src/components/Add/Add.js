@@ -31,8 +31,11 @@ const Add = () => {
 
   const handelSubmet = (e) => {
     const { name, value } = e.target;
-    setData((prevstate) => ({ ...prevstate, [name]: value }));
-    console.log(data);
+    if (name === "projects" || name === "hardSkills" || name === "softSkills") {
+      setData((prevstate) => ({ ...prevstate, [name]: value.split(",") }));
+    } else {
+      setData((prevstate) => ({ ...prevstate, [name]: value }));
+    }
   };
   const handelsubmition = (e) => {
     e.preventDefault();

@@ -1,17 +1,20 @@
 import React from "react";
 import { Container, Row } from "reactstrap";
 import style from "./NavBar.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
+import {} from "react-router-dom";
 const NavBar = () => {
+  let location = useLocation();
   const navigate = useNavigate();
   const [cookies, setCookie, removeCookie] = useCookies(["token"]);
   const isAdminFromRedux = useSelector((state) => state.isAdmin);
   const logout = () => {
     removeCookie("token", { path: "/" });
-    window.location.href = "www.google.com";
+    console.log(location);
+    navigate("/");
+    window.location.reload();
   };
   return (
     <div className={style.contenar}>
